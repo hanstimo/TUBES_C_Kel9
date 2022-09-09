@@ -15,6 +15,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inputUsername: TextInputLayout
     private lateinit var inputPassword: TextInputLayout
     private lateinit var mainLayout: ConstraintLayout
+    var mBundle: Bundle? = null
+
+    lateinit var vUsername: String
+    lateinit var vPassword: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,9 @@ class MainActivity : AppCompatActivity() {
         val btnLogin: Button = findViewById(R.id.btnLogin)
         val textViewRegister: TextView = findViewById(R.id.textViewRegister)
 
+
+
+
         //  Aksi btnClear ketika di klik
         btnClear.setOnClickListener { // Mengosongkan Input
             inputUsername.getEditText()?.setText("")
@@ -40,9 +47,14 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(mainLayout, "Text Cleared Success", Snackbar.LENGTH_LONG).show()
         }
 
+        textViewRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
         //  Aksi pada btnLogin
         btnLogin.setOnClickListener(View.OnClickListener {
-            var checkLogin = false
+            var checkLogin = true
             val username: String = inputUsername.getEditText()?.getText().toString()
             val password: String = inputPassword.getEditText()?.getText().toString()
 
@@ -59,16 +71,24 @@ class MainActivity : AppCompatActivity() {
             }
 
             //  Ganti Password dengan NPM kalian.
-            if (username == "kelompok9" && password == "123") checkLogin = true
+            if(mBundle != null){
+                getBundle()
+                if(username == vUsername && password == vPassword){
+                    checkLogin = true
+                }
+            }else if (username == "kelompok9" && password == "123")checkLogin = true
             if (!checkLogin) return@OnClickListener
             val moveHome = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(moveHome)
         })
 
-        textViewRegister.setOnClickListener{
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+       }
+
+        fun getBundle() {
+            lateinit var mBundle: Bundle
+            mBundle = intent.getBundleExtra("REGISTER")!!
+            vUsername = mBundle.getString("username")!!
+            vPassword = mBundle.getString("password")!!
         }
 
-    }
 }

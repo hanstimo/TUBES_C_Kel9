@@ -20,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var mainLayout: ConstraintLayout
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -32,6 +33,7 @@ class RegisterActivity : AppCompatActivity() {
         inputNomorTelepon = findViewById(R.id.inputLayoutNomorTelepon)
         val btnClear: Button = findViewById(R.id.btnClear)
         val btnRegister: Button = findViewById(R.id.btnRegister)
+        val textViewLogin: TextView = findViewById(R.id.textViewLogin)
 
         btnClear.setOnClickListener {
             inputUsername.getEditText()?.setText("")
@@ -84,8 +86,16 @@ class RegisterActivity : AppCompatActivity() {
             mBundle.putString("password", password)
             moveHome.putExtra("REGISTER", mBundle)
 
+
             startActivity(moveHome)
         })
+        textViewLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-}
+    }
+
+
+
