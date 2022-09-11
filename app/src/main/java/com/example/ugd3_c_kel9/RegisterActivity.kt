@@ -31,6 +31,7 @@ class RegisterActivity : AppCompatActivity() {
         inputEmail = findViewById(R.id.inputLayoutEmail)
         inputTanggalLahir = findViewById(R.id.inputLayoutTanggalLahir)
         inputNomorTelepon = findViewById(R.id.inputLayoutNomorTelepon)
+        mainLayout = findViewById(R.id.registerLayout)
         val btnClear: Button = findViewById(R.id.btnClear)
         val btnRegister: Button = findViewById(R.id.btnRegister)
         val textViewLogin: TextView = findViewById(R.id.textViewLogin)

@@ -90,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/studeer_blue"
             android:text="Clear Field" />
 
         <com.google.android.material.button.MaterialButton
@@ -97,7 +98,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Login" />
+            android:backgroundTint="@color/studeer_blue"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:text="LOGIN" />
     </LinearLayout>
 
     <TextView
